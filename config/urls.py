@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#mediaのルート追加
+from django.contrib.staticfiles.urls import static
+from .import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('hamburger.urls')),
 ]
+
+#開発サーバーでメディア配信をできるようにする設定
+urlpatterns += static(settings.MEDIA_URL, doqument_root=settings.MEDIA_ROOT)
