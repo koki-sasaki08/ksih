@@ -10,3 +10,11 @@ class IndexView(generic.TemplateView):
 class MacListView(generic.ListView):
     model = Mac
     template_name = 'mac_list.html'
+
+class MosListView(generic.ListView):
+    model = Mos
+    template_name = 'Mos_list.html'
+
+class BurgerKingListView(generic.ListView):
+    model = BurgerKing
+    template_name = 'burgerKing_list.html'
