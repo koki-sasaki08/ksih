@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+
+app_name='hamburger'
 urlpatterns = [
     path('',views.IndexView.as_view(),name="index"),
+    path('mac_list', views.MacListView.as_view(), name='mac_list'),
+    path('mos_list', views.MosListView.as_view(), name='mos_list'),
+    path('burgerking_list', views.BurgerKingListView.as_view(), name='burgerKing_list'),
 ]
