@@ -173,3 +173,15 @@ class MosListView(generic.ListView):
 class BurgerKingListView(generic.ListView):
     model = BurgerKing
     template_name = 'burgerKing_list.html'
+
+class MacDetailView(generic.DetailView):
+    model = Mac
+    template_name = 'detail.html'
+
+class MosDetailView(generic.DetailView):
+    model = Mos
+    template_name = 'detail.html'
+
+class BurgerKingDetailView(generic.DetailView):
+    model = BurgerKing
+    template_name = 'detail.html'
