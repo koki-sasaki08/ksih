@@ -29,7 +29,7 @@ class MacCreateView(LoginRequiredMixin,generic.CreateView):
     model = Mac
     template_name = 'Mac_create.html'
     form_class = MacCreateForm
-    success_url = reverse_lazy('hamburger:Mac_list')
+    success_url = reverse_lazy('hamburger:mac_list')
 
     def form_valid(self, form):
         hamburger = form.save(commit=False)
@@ -48,7 +48,7 @@ class MacUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = MacCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:Mac_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:mac_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
@@ -61,7 +61,7 @@ class MacUpdateView(LoginRequiredMixin,generic.UpdateView):
 class MacDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Mac
     template_name = 'Mac_delete.html'
-    success_url = reverse_lazy('hamburger:Mac_list')
+    success_url = reverse_lazy('hamburger:mac_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "データを削除しました。")
@@ -76,7 +76,7 @@ class MosCreateView(LoginRequiredMixin,generic.CreateView):
     model = Mos
     template_name = 'Mos_create.html'
     form_class = MosCreateForm
-    success_url = reverse_lazy('hamburger:Mos_list')
+    success_url = reverse_lazy('hamburger:mos_list')
 
     def form_valid(self, form):
         hamburger = form.save(commit=False)
@@ -95,7 +95,7 @@ class MosUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = MosCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:Mos_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:mos_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
@@ -108,7 +108,7 @@ class MosUpdateView(LoginRequiredMixin,generic.UpdateView):
 class MosDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = Mos
     template_name = 'Mos_delete.html'
-    success_url = reverse_lazy('hamburger:Mos_list')
+    success_url = reverse_lazy('hamburger:mos_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "データを削除しました。")
@@ -123,7 +123,7 @@ class BurgerKingCreateView(LoginRequiredMixin,generic.CreateView):
     model = BurgerKing
     template_name = 'BurgerKing_create.html'
     form_class = BurgerKingCreateForm
-    success_url = reverse_lazy('hamburger:BurgerKing_list')
+    success_url = reverse_lazy('hamburger:burgerKing_list')
 
     def form_valid(self, form):
         hamburger = form.save(commit=False)
@@ -142,7 +142,7 @@ class BurgerKingUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = BurgerKingCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:BurgerKing_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:burgerKing_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
@@ -155,7 +155,7 @@ class BurgerKingUpdateView(LoginRequiredMixin,generic.UpdateView):
 class BurgerKingDeleteView(LoginRequiredMixin,generic.DeleteView):
     model = BurgerKing
     template_name = 'BurgerKing_delete.html'
-    success_url = reverse_lazy('hamburger:BurgerKing_list')
+    success_url = reverse_lazy('hamburger:burgerKing_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "データを削除しました。")
