@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
         verbose_name_plural = 'CustomUser'
 
 class Mac(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='id', on_delete=models.PROTECT)
     name = models.CharField(verbose_name='メニュー名', max_length=50)
     price = models.IntegerField(verbose_name='値段', blank=True, null=True)
     ditail = models.TextField(verbose_name='詳細', blank=True, null=True)
@@ -22,6 +23,7 @@ class Mac(models.Model):
         return self.name
 
 class Mos(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='id', on_delete=models.PROTECT)
     name = models.CharField(verbose_name='メニュー名', max_length=50)
     price = models.IntegerField(verbose_name='値段', blank=True, null=True)
     ditail = models.TextField(verbose_name='詳細', blank=True, null=True)
@@ -34,6 +36,7 @@ class Mos(models.Model):
         return self.name
 
 class BurgerKing(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='id', on_delete=models.PROTECT)
     name = models.CharField(verbose_name='メニュー名', max_length=50)
     price = models.IntegerField(verbose_name='値段', blank=True, null=True)
     ditail = models.TextField(verbose_name='詳細', blank=True, null=True)
