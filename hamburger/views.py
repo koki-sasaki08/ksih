@@ -116,6 +116,7 @@ class MosDeleteView(LoginRequiredMixin,generic.DeleteView):
 
 
 
+
 #BurgerKing
 class BurgerKingCreateView(LoginRequiredMixin,generic.CreateView):
     model = BurgerKing
