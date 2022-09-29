@@ -47,7 +47,7 @@ class MacUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = MacCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:hamburger_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:Mac_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
@@ -116,7 +116,6 @@ class MosDeleteView(LoginRequiredMixin,generic.DeleteView):
 
 
 
-
 #BurgerKing
 class BurgerKingCreateView(LoginRequiredMixin,generic.CreateView):
     model = BurgerKing
@@ -141,7 +140,7 @@ class BurgerKingUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = BurgerKingCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:hamburger_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:BurgerKing_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
