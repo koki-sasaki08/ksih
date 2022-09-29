@@ -147,12 +147,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-
+# django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.ModelBackend',
+    # 一般ユーザー用（ユーザー名認証）
     'django.contrib.auth.backends.ModelBackend',
+    # 管理サイト用（ユーザー名認証）
 )
 
 # ログイン、ログアウトのURLの設定
@@ -162,3 +164,6 @@ LOGOUT_URL = 'hamburger:logout'
 # リダイレクト先の設定
 LOGIN_REDIRECT_URL = 'hamburger:index'
 LOGOUT_REDIRECT_URL = 'hamburger:index'
+
+# ログアウトリンクのクリック一発でログアウトする設定
+ACCOUNT_LOGOUT_ON_GET = True
