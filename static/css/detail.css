@@ -1,0 +1,6 @@
+/* detileのため追加 */
+
+.cozyspace-img,.cozyspace-message{
+  display: inline-block;
+  vertical-align:middle;
+}

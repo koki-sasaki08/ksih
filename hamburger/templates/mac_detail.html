@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}商品一覧｜Shop Menu{% endblock %}
+
+{% block head %}<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">{% endblock %}
+
+{% block contents %}
+
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="cozyspace-wrapper">
+      <div class="container">
+        <div class="cozyspace-img">
+          <img src="{{ object.photo }}">
+        </div>
+        <div class="cozyspace-message">
+          <h2>居心地の良い空間</h2>
+          <h3>cozy space</h3>
+          <p>ここに文章が入ります。</p>
+        </div>
+      </div>
+  </div>
+  </div>
+</section>
+
+
+{% endblock %}

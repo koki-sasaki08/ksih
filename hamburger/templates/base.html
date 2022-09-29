@@ -31,23 +31,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-                                <li><a class="dropdown-item" href="#!">マクドナルド</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">モスバーガー</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">バーガーキング</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul>
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link {% block active_diary_list %}{% endblock %}" href="{% url 'diary:diary_list' %}">DIARY LIST</a>
-                            </li>
-                        {% endif %}                               
-                    </ul>
-=======
+
                                 <li><a class="dropdown-item" href="{% url 'hamburger:mac_list' %}">マクドナルド</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="{% url 'hamburger:mos_list' %}">モスバーガー</a></li>
@@ -56,7 +40,6 @@
                             </ul>
                         </li>
                     </ul>
->>>>>>> sasaki2
 
                     <ul class="navbar-nav ms-auto">
                         {% if user.is_authenticated %}
