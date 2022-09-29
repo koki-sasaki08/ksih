@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from telnetlib import AUTHENTICATION
+from urllib.error import URLError
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'hamburger.apps.HamburgerConfig'
+    'hamburger.apps.HamburgerConfig',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +146,19 @@ AUTH_USER_MODEL = 'hamburger.CustomUser'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = (
+    'allauth.account.auth_backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# ログイン、ログアウトのURLの設定
+LOGIN_URL = 'hamburger:login'
+LOGOUT_URL = 'hamburger:logout'
+
+# リダイレクト先の設定
+LOGIN_REDIRECT_URL = 'hamburger:index'
+LOGOUT_REDIRECT_URL = 'hamburger:index'

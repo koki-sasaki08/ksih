@@ -22,6 +22,7 @@ from .import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('hamburger.urls')),
+    path('accounts/',include('allauth.urls')),
 ]
 
 #開発サーバーでメディア配信をできるようにする設定
