@@ -10,23 +10,38 @@ class IndexView(generic.TemplateView):
 class MacListView(generic.ListView):
     model = Mac
     template_name = 'mac_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        macs = Mac.objects.filter(user=self.request.user)
+        return macs
 
 class MosListView(generic.ListView):
     model = Mos
     template_name = 'Mos_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        macs = Mos.objects.filter(user=self.request.user)
+        return macs
 
 class BurgerKingListView(generic.ListView):
     model = BurgerKing
     template_name = 'burgerKing_list.html'
+    paginate_by = 8
+
+    def get_queryset(self):
+        macs = BurgerKing.objects.filter(user=self.request.user)
+        return macs
 
 class MacDetailView(generic.DetailView):
     model = Mac
-    template_name = 'detail.html'
+    template_name = 'mac_detail.html'
 
 class MosDetailView(generic.DetailView):
     model = Mos
-    template_name = 'detail.html'
+    template_name = 'mos_detail.html'
 
 class BurgerKingDetailView(generic.DetailView):
     model = BurgerKing
-    template_name = 'detail.html'
+    template_name = 'burgerking_detail.html'
