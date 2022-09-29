@@ -23,4 +23,7 @@ urlpatterns = [
     path('mos_list/', views.MosListView.as_view(), name='mos_list'),
     path('burgerking_list/', views.BurgerKingListView.as_view(), name='burgerKing_list'),
     path('mac_detail/<int:pk>/', views.MacDetailView.as_view(), name='mac_detail'),
+    path('mos_detail/<int:pk>/', views.MosDetailView.as_view(), name='mos_detail'),
+    path('burgerking_detail/<int:pk>/', views.BurgerKingDetailView.as_view(), name='burgerking_detail'),
 ]
+
