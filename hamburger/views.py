@@ -123,7 +123,7 @@ class BurgerKingCreateView(LoginRequiredMixin,generic.CreateView):
     model = BurgerKing
     template_name = 'BurgerKing_create.html'
     form_class = BurgerKingCreateForm
-    success_url = reverse_lazy('hamburger:burgerKing_list')
+    success_url = reverse_lazy('hamburger:burgerking_list')
 
     def form_valid(self, form):
         hamburger = form.save(commit=False)
@@ -142,7 +142,7 @@ class BurgerKingUpdateView(LoginRequiredMixin,generic.UpdateView):
     form_class = BurgerKingCreateForm
 
     def get_success_url(self):
-        return reverse_lazy('hamburger:burgerKing_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hamburger:burgerking_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, 'データを更新しました。')
@@ -168,7 +168,7 @@ class MacListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = Mac.objects.order_by('price')#ここ変更した
+        macs = Mac.objects.order_by('price')
         return macs
 
 class MosListView(generic.ListView):
@@ -177,7 +177,7 @@ class MosListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = Mos.objects.filter(user=self.request.user)
+        macs = Mos.objects.order_by('price')
         return macs
 
 class BurgerKingListView(generic.ListView):
@@ -186,7 +186,7 @@ class BurgerKingListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = BurgerKing.objects.filter(user=self.request.user)
+        macs = BurgerKing.objects.order_by('price')
         return macs
 
 class MacDetailView(generic.DetailView):
