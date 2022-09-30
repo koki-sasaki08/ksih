@@ -168,7 +168,7 @@ class MacListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = Mac.objects.filter(user=self.request.user)
+        macs = Mac.objects.order_by('price')
         return macs
 
 class MosListView(generic.ListView):
@@ -177,7 +177,7 @@ class MosListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = Mos.objects.filter(user=self.request.user)
+        macs = Mos.objects.order_by('price')
         return macs
 
 class BurgerKingListView(generic.ListView):
@@ -186,7 +186,7 @@ class BurgerKingListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = BurgerKing.objects.filter(user=self.request.user)
+        macs = BurgerKing.objects.order_by('price')
         return macs
 
 class MacDetailView(generic.DetailView):
