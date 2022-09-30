@@ -25,5 +25,8 @@ urlpatterns = [
     path('mos_detail/<int:pk>/', views.MosDetailView.as_view(), name='mos_detail'),
     path('burgerking_detail/<int:pk>/', views.BurgerKingDetailView.as_view(), name='burgerking_detail'),
 
+    # お気に入り機能のurl
+    path('mac_for_post/', views.mac_for_post, name='mac_for_post'), 
+
 ]
 

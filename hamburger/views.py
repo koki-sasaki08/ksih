@@ -1,7 +1,9 @@
 from tokenize import Hexnumber
 from django.shortcuts import render
 from django.views import generic
-from .models import Mac, Mos, BurgerKing, Favorite
+from .models import Mac, Mos, BurgerKing, FavoriteMac
+from django.http import JsonResponse  
+from django.shortcuts import get_object_or_404  
 
 import logging
 
@@ -193,6 +195,19 @@ class MacDetailView(generic.DetailView):
     model = Mac
     template_name = 'mac_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        like_for_post_count = self.object.favoritemac_set.count()
+        # ポストに対するイイね数
+        context['like_for_post_count'] = like_for_post_count
+        # ログイン中のユーザーがイイねしているかどうか
+        if self.object.favoritemac_set.filter(user=self.request.user).exists():
+            context['is_user_liked_for_post'] = True
+        else:
+            context['is_user_liked_for_post'] = False
+
+        return context
+
 class MosDetailView(generic.DetailView):
     model = Mos
     template_name = 'mos_detail.html'
@@ -200,3 +215,22 @@ class MosDetailView(generic.DetailView):
 class BurgerKingDetailView(generic.DetailView):
     model = BurgerKing
     template_name = 'burgerking_detail.html'
+
+def mac_for_post(request):
+    post_pk = request.POST.get('post_pk')
+    context = {
+        'user': f'{request.user.last_name} {request.user.first_name}',
+    }
+    post = get_object_or_404(Mac, pk=post_pk)
+    like = FavoriteMac.objects.filter(mac=post, user=request.user)
+
+    if like.exists():
+        like.delete()
+        context['method'] = 'delete'
+    else:
+        like.create(mac=post, user=request.user)
+        context['method'] = 'create'
+
+    context['like_for_post_count'] = post.favoritemac_set.count()
+
+    return JsonResponse(context)
