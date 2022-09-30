@@ -52,7 +52,6 @@ class BurgerKing(models.Model):
 
 class FavoriteMac(models.Model):
     mac = models.ForeignKey(Mac, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(default=timezone.now)
 
     class Meta:
