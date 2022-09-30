@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 # Create your models here.
 
@@ -48,11 +49,11 @@ class BurgerKing(models.Model):
     def __str__(self):
         return self.name
 
-class Favorite(models.Model):
-    mac = models.ForeignKey(Mac, verbose_name='マック', on_delete=models.PROTECT)
-    mos = models.ForeignKey(Mos, verbose_name='モスバーガー', on_delete=models.PROTECT)
-    burgerking = models.ForeignKey(BurgerKing, verbose_name='バーガーキング', on_delete=models.PROTECT)
-   
+
+class FavoriteMac(models.Model):
+    mac = models.ForeignKey(Mac, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        verbose_name_plural = 'Favorite'
+        verbose_name_plural = 'FavoriteMac'
