@@ -168,7 +168,7 @@ class MacListView(generic.ListView):
     paginate_by = 8
 
     def get_queryset(self):
-        macs = Mac.objects.filter(user=self.request.user)
+        macs = Mac.objects.order_by('price')#ここ変更した
         return macs
 
 class MosListView(generic.ListView):
