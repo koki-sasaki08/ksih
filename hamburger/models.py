@@ -56,3 +56,10 @@ class Favorite(models.Model):
 
     class Meta:
         verbose_name_plural = 'Favorite'
+
+class FavoriteMac(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='id', on_delete=models.PROTECT)
+    mac = models.ForeignKey(Mac, verbose_name='マック', on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name_plural = 'Favorite'
